@@ -3,7 +3,7 @@ const { user } = require('../models')
 const createUser = async (req, res) => {
     try {
         const { name, email } = req.body
-        const file = req.file
+        const file = req.file.buffer
 
         // validation
         if (name == '' || email == '' || file == '') {
@@ -11,6 +11,8 @@ const createUser = async (req, res) => {
                 'message': 'nama atau email atau file tidak boleh kosong'
             })
         }
+
+        // console.log(file)
 
         await user.create({
             name,
@@ -24,7 +26,7 @@ const createUser = async (req, res) => {
     }
     catch (err) {
         return res.status(500).send({
-            'message': err?.message
+            'message': err.message
         })
     }
 }

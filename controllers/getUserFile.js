@@ -3,28 +3,29 @@ const { user } = require('../models')
 const getUserFile = async (req, res) => {
     try {
         const { id } = req.params
-        const file = await File.findByPk(id)
-
-        const checkId = await user.findOne({
-            where: {
-                id: id
-            }
-        })
+        const file = await user.findByPk(id)
 
         // validation
-        if (!checkId) {
+        if (!file) {
             return res.status(400).send({
-                'message': 'ID tidak ada di database'
+                'message': 'ID tidak ditemukan di database'
             })
         }
 
-        res.set('Content-Type', 'application/pdf')
-        res.set('Content-Disposition', `attachment; filename="${file.name}"`)
-        res.send(file.data)
+        // console.log(file)
+        const fileName = file.name
+        const fileByte = file.file
+
+        // set header
+        res.contentType('application/pdf')
+        res.setHeader('Content-Disposition', `attachment; filename="${fileName}.pdf"`)
+        
+        // download file
+        res.send(fileByte)
     }
     catch (err) {
         return res.status(500).send({
-            'message': err?.message
+            'message': err.message
         })
     }
 }

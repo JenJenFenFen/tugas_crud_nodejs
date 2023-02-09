@@ -11,7 +11,10 @@ const router = express()
 const multer = require('multer')
 const storage = multer.memoryStorage()
 const upload = multer({
-    storage: storage
+    storage: storage,
+    limits: {
+        fileSize: 1000000
+    }
 }).single('file')
 
 router.get('/', introduction)

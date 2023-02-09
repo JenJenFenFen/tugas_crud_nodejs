@@ -29,7 +29,7 @@ const deleteUser = async (req, res) => {
     }
     catch (err) {
         return res.status(500).send({
-            'message': err.toString()
+            'message': err.message
         })
     }
 }

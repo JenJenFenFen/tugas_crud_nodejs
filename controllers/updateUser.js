@@ -4,12 +4,13 @@ const updateUser = async (req, res) => {
     try {
         const { id } = req.params
         const { name, email } = req.body
+        const checkId = await user.findByPk(id)
 
-        const checkId = await user.findOne({
-            where: {
-                id: id
-            }
-        })
+        // const checkId = await user.findOne({
+        //     where: {
+        //         id: id
+        //     }
+        // })
 
         // validation
         if (!checkId) {

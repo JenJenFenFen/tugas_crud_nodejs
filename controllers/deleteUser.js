@@ -3,12 +3,13 @@ const { user } = require('../models')
 const deleteUser = async (req, res) => {
     try {
         const { id } = req.params
+        const checkId = await user.findByPk(id)
 
-        const checkId = await user.findOne({
-            where: {
-                id: id
-            }
-        })
+        // const checkId = await user.findOne({
+        //     where: {
+        //         id: id
+        //     }
+        // })
 
         // validation
         if (!checkId) {

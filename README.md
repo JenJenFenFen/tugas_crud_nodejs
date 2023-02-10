@@ -5,7 +5,7 @@ This is the task from Kak Faizul harisenin to make CRUD at node.js
 How to use :
 1. Fork this repository
 2. Turn on Apache and MySQL from XAMPP
-3. Install Module (npm install)
+3. Install all Modules (npm install)
 4. Create a database in PHPMyAdmin (make sure the database name is the same as a config.json)
 ![image](https://user-images.githubusercontent.com/114470554/217854369-4abce559-34d7-4368-8501-5231cd1cf3ce.png)
 > You can change your own database name in the config.json
